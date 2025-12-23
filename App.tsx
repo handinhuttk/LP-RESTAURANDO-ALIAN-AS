@@ -6,9 +6,14 @@ import { QuizCard } from './components/QuizCard';
 import { ProcessingScreen } from './components/ProcessingScreen';
 import { ResultScreen } from './components/ResultScreen';
 import { OfferScreen } from './components/OfferScreen';
+import { useTracking } from './src/hooks/useTracking';
 
 const App: React.FC = () => {
   const [screen, setScreen] = useState<ScreenState>('intro');
+  
+  // Inicializa o sistema de rastreamento
+  useTracking(screen);
+
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState<UserAnswers>({});
   const [isExiting, setIsExiting] = useState(false);
